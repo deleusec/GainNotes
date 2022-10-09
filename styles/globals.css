@@ -2,21 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Uni Neue Book";
+    src: url("../public/fonts/UniNeueBook.otf");
+}
+
+@font-face {
+    font-family: "Uni Neue Bold";
+    src: url("../public/fonts/UniNeueBold.otf");
+    font-weight: bold;
+}
+
 html,
 body {
-  background-color: rgb(245 245 245);
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    background-color: rgb(245 245 245);
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 

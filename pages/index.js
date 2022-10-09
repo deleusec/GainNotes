@@ -49,14 +49,14 @@ export default function Home() {
     }
 
     return (
-        <Layout className={styles.container}>
-            <div className={"flex flex-row flex-wrap p-3 gap-3"}>
+        <Layout>
+            <div className={"flex flex-col lg:flex-row flex-wrap p-3 gap-3"}>
 
                 {/* WEIGHT */}
-                <div className={"flex-1 w-1/2 flex-col p-3 rounded-xl justify-center bg-white text-stone-800 "}>
+                <div className={"flex-1 w-full lg:w-1/2 flex-col p-3 rounded-xl justify-center bg-white text-stone-800"}>
                     <h2 className={"text-stone-800 text-2xl mb-3"}>Ton poids</h2>
                     <div className={"flex justify-between items-center mb-3"}>
-                        <p className={'text-xl font-bold '}>76kg</p>
+                        <p className={'text-xl font-unineuebold '}>76kg</p>
                         <select name="scale" id="scale" onChange={(event)=>setScaleValue(event.target.value)} className={"border-2 rounded border-indigo-400"}>
                             <option value="Week">Week</option>
                             <option value="Month">Month</option>
@@ -78,8 +78,13 @@ export default function Home() {
                 {/* WEIGHT */}
 
                 {/* WATER */}
-                <div className={"flex-1  w-1/2 min-w-[500px] flex-col p-3 rounded-xl justify-center bg-white text-stone-800 "}>
+                <div className={"flex-1  w-full lg:w-1/2 flex-col p-3 rounded-xl justify-center bg-white text-stone-800 "}>
                     <h2 className={'text-stone-800 text-2xl mb-3'}>Quantité d'eau</h2>
+                    <div className={'flex justify-center'}>
+                        <div className={' block'}>
+                            <Image src={"/water1.svg"} width={75} height={75}/>
+                        </div>
+                    </div>
                 </div>
                 {/* WATER */}
 

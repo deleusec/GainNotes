@@ -98,8 +98,16 @@ function LineChart({scaleValue}) {
 
         } else if (scaleValue === "Month") {
             console.log('month !')
+            setDatesArray([])
+            setXAbsisValues([])
+            setMaxYValue("")
+            setMinYValue("")
         } else if (scaleValue === "Year") {
             console.log('year !')
+            setDatesArray([])
+            setXAbsisValues([])
+            setMaxYValue("")
+            setMinYValue("")
         }
 
     }, [scaleValue])
@@ -107,12 +115,14 @@ function LineChart({scaleValue}) {
     useEffect(()=>{
         if(minYValue !== "" && maxYValue !=="" && xAbsisValues !== [] && datesArray !== []){
             setIsLoading(true)
+        } else {
+            setIsLoading(false)
         }
     },[xAbsisValues,minYValue,maxYValue,datesArray])
 
     return (
-        <div>
-            {isLoading && <Line
+        <div className={'min-h-[100px]'}>
+            {isLoading ? <Line
                 datasetIdKey={'id'}
                 options={{
                     scales: {
@@ -139,7 +149,7 @@ function LineChart({scaleValue}) {
 
                         }
                     ],
-                }}/>}
+                }}/> : "In progress..."}
         </div>
 
 

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function Header(props) {
     return (
-        <header className={'flex items-center p-3 border-b border-b-stone-100 justify-between bg-white'}>
+        <header className={'flex items-center p-3 border-b border-b-stone-100 justify-between bg-white font-unineuebook'}>
             <Link href={'/'}><a><Image src={'/logo.svg'} width={'125'} height={'40'}/></a></Link>
             <nav>
                 <ul>

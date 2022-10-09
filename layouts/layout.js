@@ -14,7 +14,7 @@ function Layout({children}) {
 
             <Header/>
 
-            <main>
+            <main className={"font-unineuebook"}>
                 {children}
             </main>
 
