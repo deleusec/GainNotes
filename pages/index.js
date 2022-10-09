@@ -61,7 +61,7 @@ export default function Home() {
                     <h2 className={"text-stone-800 text-2xl mb-3"}>Ton poids</h2>
                     <div className={"flex justify-between items-center mb-3"}>
                         <p className={'text-xl font-unineuebold '}>76kg</p>
-                        <select name="scale" id="scale" onChange={(event)=>setScaleValue(event.target.value)} className={"border-2 rounded border-indigo-400"}>
+                        <select name="scale" id="scale" onChange={(event)=>setScaleValue(event.target.value)} className={"p-1 rounded bg-stone-100 outline-0"}>
                             <option value="Week">Week</option>
                             <option value="Month">Month</option>
                             <option value="Year">Year</option>
