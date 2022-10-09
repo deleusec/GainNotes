@@ -27,64 +27,104 @@ function LineChart({scaleValue}) {
     // useStates
     const [datesArray, setDatesArray] = useState([])
     const [xAbsisValues, setXAbsisValues] = useState([])
-    const [yAbsisValues, setYAbsisValues] = useState([])
+    const [maxYValue, setMaxYValue] = useState(0)
+    const [minYValue, setMinYValue] = useState(0)
 
-    let currentDate = new Date();
-    let date = currentDate;
-    let dates = [date.getDate()]
+    useEffect(() => {
+        let currentDate = new Date();
+        let editableDate = currentDate;
 
-    if (scaleValue === "Week") {
-        // Get previous dates
-        for (let i = 0; i < 3; i++) {
-            const previousDate = date.getTime() - 86400000;
-            date = new Date(previousDate)
-            dates.push(date.getDate())
+        if (scaleValue === "Week") {
 
+            /**
+             * Y ABSIS
+             */
+
+            // Get Min and Max value on the X absis
+            const weights = data.weights.map((item)=>{
+                return item.weight
+            })
+            setMaxYValue( Math.max(...weights)+ 10)
+            setMinYValue( Math.min(...weights)- 10)
+
+
+            /**
+             * X ABSIS
+             */
+
+            // Add current date in array
+            let dates = [editableDate.getTime()]
+            console.log('dates', dates)
+
+            // Get previous dates
+            for (let i = 0; i < 3; i++) {
+                const previousDate = editableDate.getTime() - 86400000;
+                editableDate = new Date(previousDate)
+                dates.push(editableDate.getTime())
+
+            }
+            dates.reverse()
+            editableDate = currentDate;
+            // Get next dates
+            for (let i = 0; i < 3; i++) {
+                const nextDate = editableDate.getTime() + 86400000;
+                editableDate = new Date(nextDate)
+                dates.push(editableDate.getTime())
+
+            }
+
+            let datesFormat = []
+            const datesNumber = dates.map((item)=>{
+                datesFormat.push(format(new Date(item), "dd/MM/yyyy"))
+                return new Date(item).getDate()
+            })
+            setXAbsisValues(datesNumber)
+
+
+
+
+
+        } else if (scaleValue === "Month") {
+            console.log('month !')
+        } else if (scaleValue === "Year") {
+            console.log('year !')
         }
-        dates.reverse()
-        date = currentDate;
-        for (let i = 0; i < 3; i++) {
-            const previousDate = date.getTime() + 86400000;
-            date = new Date(previousDate)
-            dates.push(date.getDate())
 
-        }
-    } else if (scaleValue === "Month") {
-
-    } else if (scaleValue === "Year") {
-
-    }
+    }, [])
 
 
     return (
-        <Line
-            datasetIdKey={'id'}
-            options={{
-                scales: {
-                    y: {
-                        max: 80,
-                        min: 70,
-                    }
-                },
-            }}
-            data={{
-                labels: dates,
-                datasets: [
-                    {
-                        showInLegend: true,
-                        id: 1,
-                        label: '',
-                        data: [75, null, 74, 73],
+        <div>
+            <Line
+                datasetIdKey={'id'}
+                options={{
+                    scales: {
+                        y: {
+                            max: maxYValue,
+                            min: minYValue,
+                        }
+                    },
+                }}
+                data={{
+                    labels: xAbsisValues,
+                    datasets: [
+                        {
+                            showInLegend: true,
+                            id: 1,
+                            label: '',
+                            data: [75, null, 74, 73],
 
-                        tension: 0.4,
-                        fill: true,
-                        borderColor: '#c084fc',
-                        spanGaps: true,
-                        backgroundColor: 'rgba(192,132,252,0.5)'
+                            tension: 0.4,
+                            fill: true,
+                            borderColor: '#c084fc',
+                            spanGaps: true,
+                            backgroundColor: 'rgba(192,132,252,0.5)'
 
-                    }
-                ],
-            }}/>
+                        }
+                    ],
+                }}/>
+        </div>
+
 
     );
 }

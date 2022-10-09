@@ -55,8 +55,8 @@ export default function Home() {
                 {/* WEIGHT */}
                 <div className={"flex-1 w-1/2 flex-col p-3 rounded-xl justify-center bg-white text-stone-800 "}>
                     <h2 className={"text-stone-800 text-2xl mb-3"}>Ton poids</h2>
-                    <div className={"flex justify-between items-center"}>
-                        <p className={'text-xl font-bold mb-4'}>76kg</p>
+                    <div className={"flex justify-between items-center mb-3"}>
+                        <p className={'text-xl font-bold '}>76kg</p>
                         <select name="scale" id="scale" onChange={(event)=>setScaleValue(event.target.value)} className={"border-2 rounded border-indigo-400"}>
                             <option value="Week">Week</option>
                             <option value="Month">Month</option>
@@ -66,11 +66,14 @@ export default function Home() {
                     <div>
                         <LineChart scaleValue={scaleValue} />
                     </div>
-                    <Link href={{pathname:"/weight"}} >
-                        <a className={"cursor-pointer bg-gradient-to-br from-indigo-300 to-purple-400 hover:from-indigo-400 hover:to-purple-500 text-neutral-100 py-1 px-6 rounded font-bold"}>
-                            New
-                        </a>
-                    </Link>
+                    <div  className={"mt-3 flex justify-center"} >
+                        <Link href={{pathname:"/weight"}}>
+                            <a className={"cursor-pointer uppercase bg-gradient-to-br my-3 text-center from-indigo-300 to-purple-400 hover:from-indigo-400 hover:to-purple-500 text-neutral-100 py-1 px-6 rounded font-bold"}>
+                                New
+                            </a>
+                        </Link>
+                    </div>
+
                 </div>
                 {/* WEIGHT */}
 
