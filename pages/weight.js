@@ -34,7 +34,7 @@ function Weight(props) {
                 <label htmlFor={'weight'}>
                     Ton poids
                 </label>
-                <input onChange={(e)=>{e.target.style.width = e.target.style.width + (8 * e.target.value).length+"px"}} className={'p-3 text-4xl min-w-[50px] bg-transparent border-b-2 border-indigo-500'} step={"0.01"}
+                <input required onChange={(e)=>{e.target.style.width = e.target.style.width + (8 * e.target.value).length+"px"}} className={'p-3 outline-0 text-4xl min-w-[50px] bg-transparent border-b-2 border-indigo-500 focus:border-b-4 focus:border-purple-500 duration-100'} step={"0.01"}
                        id={'weight'} type="number" maxLength="3" contentEditable/>
                 <button
                     className={'cursor-pointer uppercase bg-gradient-to-br my-3 text-center from-indigo-300 to-purple-400 hover:from-indigo-400 hover:to-purple-500 text-neutral-100 py-1 px-6 rounded font-bold'}
