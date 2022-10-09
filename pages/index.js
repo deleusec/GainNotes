@@ -11,6 +11,9 @@ export default function Home() {
     const [verification, setVerification] = useState(false)
     const [wantToDeleteID, setWantToDeleteID] = useState(0)
     const [scaleValue, setScaleValue] = useState('Week')
+    const [quantityWater, setQuantityWater] = useState(0)
+    const [literWater, setLiterWater] = useState(0)
+    const [water, setWater] = useState(1)
 
     // Get sessions data
     useEffect(()=>{
@@ -20,6 +23,7 @@ export default function Home() {
             console.log(e)
         })
     },[])
+
 
 
     const deleteSession = (id) =>{
@@ -78,11 +82,28 @@ export default function Home() {
                 {/* WEIGHT */}
 
                 {/* WATER */}
-                <div className={"flex-1  w-full lg:w-1/2 flex-col p-3 rounded-xl justify-center bg-white text-stone-800 "}>
+                <div className={"flex flex-1 w-full lg:w-1/2 flex-col p-3 rounded-xl bg-white text-stone-800 "}>
                     <h2 className={'text-stone-800 text-2xl mb-3'}>Quantité d'eau</h2>
-                    <div className={'flex justify-center'}>
-                        <div className={' block'}>
-                            <Image src={"/water1.svg"} width={75} height={75}/>
+                    <div className={'flex m-auto justify-self-center self-center justify-center items-center flex-col'}>
+                        <div className={"m-6"}>
+                            <Image src={"/water"+ water+".svg"} width={75} height={75}/>
+                        </div>
+
+                        <div>
+                            <p>{literWater} <span className={"font-unineuebold text-2xl"}>/2L</span></p>
+                        </div>
+
+                        <div className={"flex items-center py-3 px-6 my-6 bg-stone-100 rounded-2xl"}>
+                            <button onClick={()=> {
+                                quantityWater !== 0 && setQuantityWater(quantityWater - 1)
+                                quantityWater !== 0 && setLiterWater(literWater -0.25)
+
+                            }} className={"w-[30px] h-[30px] rounded-full cursor-pointer uppercase bg-gradient-to-br my-3 text-center from-indigo-300 to-purple-400 hover:from-indigo-400 hover:to-purple-500 text-neutral-100 rounded font-bold"}>-</button>
+                            <p className={"font-unineuebook mx-12 text-2xl w-[50px] text-center"}>{quantityWater}</p>
+                            <button onClick={()=> {
+                                quantityWater !== 100 && setQuantityWater(quantityWater + 1)
+                                quantityWater !== 100 && setLiterWater(literWater +0.25)
+                            } } className={"w-[30px] h-[30px] rounded-full cursor-pointer uppercase bg-gradient-to-br my-3 text-center from-indigo-300 to-purple-400 hover:from-indigo-400 hover:to-purple-500 text-neutral-100 rounded font-bold"}>+</button>
                         </div>
                     </div>
                 </div>
@@ -90,7 +111,7 @@ export default function Home() {
 
             </div>
 
-            <div className={"flex flex-col bg-white rounded-xl mx-3 p-3"}>
+            <div className={"flex flex-col bg-white rounded-xl mx-3 p-3 mb-20"}>
                 <h2 className={"text-stone-800 text-2xl mb-3"}>Sessions</h2>
                 <ul>
                     {sessions ? sessions.map((data)=>{
@@ -98,7 +119,7 @@ export default function Home() {
                         return (
                             <li key={data.id} className={"flex items-center bg-stone-100 mb-3 last:mb-0 hover:bg-stone-200 cursor-pointer duration-150 rounded"}>
                                 <Link href={{pathname:"/session", query: "id="+data.id}}>
-                                    <a className={"flex justify-between flex-1 p-3"}>
+                                    <a className={"flex justify-between font-unineuebold flex-1 p-3"}>
                                         {data.date}
 
                                     </a>
